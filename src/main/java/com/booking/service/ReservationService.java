@@ -95,7 +95,15 @@ public class ReservationService {
     }
 
     public static void editReservationWorkstage(Scanner input) {
-
+        PrintService.showRecentReservation(MenuService.reservationList);
+        System.out.println("Silahkan Masukkan Reservation Id:");
+        String reservationId = input.nextLine();
+        Reservation reservation = ReservationService.getReservationByReservationId(reservationId,
+                MenuService.reservationList);
+        System.out.println("Selesaikan reservasi:");
+        String workstage = input.nextLine();
+        reservation.setWorkstage(workstage);
+        System.out.println("Reservasi dengan id " + reservationId + " sudah " + workstage + "!");
     }
 
     private static int generateReservationId() {
@@ -104,5 +112,13 @@ public class ReservationService {
         return reservationId;
     }
 
-    // Silahkan tambahkan function lain, dan ubah function diatas sesuai kebutuhan
+    public static Reservation getReservationByReservationId(String reservationId, List<Reservation> reservationList) {
+        Reservation reservation = new Reservation();
+        for (int i = 0; i < MenuService.reservationList.size(); i++) {
+            if (MenuService.reservationList.get(i).getReservationId().equalsIgnoreCase(reservationId)) {
+                reservation = MenuService.reservationList.get(i);
+            }
+        }
+        return reservation;
+    }
 }

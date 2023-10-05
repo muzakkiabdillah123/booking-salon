@@ -109,8 +109,8 @@ public class PrintService {
                     || reservation.getWorkstage().equalsIgnoreCase("Cancel")) {
                 System.out.printf("| %-4s | %-4s | %-11s | %-15s | %-15s | %-10s |\n",
                         num, reservation.getReservationId(), reservation.getCustomer().getName(),
-                        printServices(reservation.getServices()), reservation.getReservationPrice(),
-                        reservation.getEmployee().getName(), reservation.getWorkstage());
+                        listServices(reservation.getServices()), reservation.getReservationPrice(),
+                        reservation.getWorkstage());
                 num++;
             }
         }
